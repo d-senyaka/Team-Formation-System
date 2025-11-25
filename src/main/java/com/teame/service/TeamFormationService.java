@@ -1,5 +1,8 @@
 package com.teame.service;
 
+import com.teame.model.Team;
+
+
 import com.teame.model.Participant;
 import com.teame.model.enums.GameType;
 import com.teame.model.enums.PersonalityType;
@@ -79,6 +82,88 @@ public class TeamFormationService {
 
         return map;
     }
+
+    /**
+     * Phase 1:
+     * Create initial teams and distribute participants with a role-first strategy.
+     * This pass focuses on spreading roles across teams.
+     */
+    public List<Team> formInitialTeamsByRole(List<Participant> participants, int teamSize) {
+        if (participants == null || participants.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        // 1) Create empty teams based on team size
+        List<Team> teams = initializeTeams(teamSize, participants.size());
+
+        // 2) Build and sort role buckets
+        Map<RoleType, List<Participant>> roleBuckets = bucketByRole(participants);
+        sortBucketsBySkill(roleBuckets); // highest skill first in each role
+
+        // 3) Distribute each role bucket across teams (round-robin)
+        distributeRolesAcrossTeams(roleBuckets, teams, teamSize);
+
+        return teams;
+    }
+
+    /**
+     * Create enough Team objects to accommodate all participants.
+     */
+    private List<Team> initializeTeams(int teamSize, int totalParticipants) {
+        int numTeams = (int) Math.ceil((double) totalParticipants / teamSize);
+        if (numTeams <= 0) {
+            numTeams = 1;
+        }
+
+        List<Team> teams = new ArrayList<>();
+        for (int i = 1; i <= numTeams; i++) {
+            teams.add(new Team("Team " + i));
+        }
+
+        // Shuffle to avoid always filling Team 1, then Team 2, etc.
+        Collections.shuffle(teams);
+
+        return teams;
+    }
+
+    /**
+     * Distribute participants from each role bucket into teams in a round-robin fashion.
+     * This tends to spread roles and skill more evenly across teams.
+     */
+    private void distributeRolesAcrossTeams(Map<RoleType, List<Participant>> roleBuckets,
+                                            List<Team> teams,
+                                            int teamSize) {
+
+        int numTeams = teams.size();
+
+        for (RoleType role : RoleType.values()) {
+            List<Participant> bucket = roleBuckets.get(role);
+            if (bucket == null || bucket.isEmpty()) {
+                continue;
+            }
+
+            int teamIndex = 0;
+
+            for (Participant p : bucket) {
+                // Find the next team that still has space
+                int tries = 0;
+                while (tries < numTeams) {
+                    Team targetTeam = teams.get(teamIndex);
+                    if (targetTeam.size() < teamSize) {
+                        targetTeam.addMember(p);
+                        teamIndex = (teamIndex + 1) % numTeams;
+                        break;
+                    } else {
+                        teamIndex = (teamIndex + 1) % numTeams;
+                        tries++;
+                    }
+                }
+                // If all teams are full, we just stop assigning (shouldn't happen if numTeams computed correctly)
+            }
+        }
+    }
+
+
 }
 
 
