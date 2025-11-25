@@ -1,5 +1,8 @@
 package com.teame.controller.common;
 
+import com.teame.controller.participant.RoleGameSkillController;
+
+
 import com.teame.config.AppConfig;
 import com.teame.controller.participant.ParticipantLoginController;
 import com.teame.controller.participant.SurveyController;
@@ -54,8 +57,24 @@ public class RootLayoutController {
         }
     }
 
-    // Will be implemented properly in 6.4
     public void showParticipantRoleGameSkill() {
-        // TODO: load participant_role_game_skill.fxml in Phase 6.4
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/participant/participant_role_game_skill.fxml"));
+            Node view = loader.load();
+
+            RoleGameSkillController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void showParticipantComplete() {
+        // TODO: implement in 6.5 – load participant_complete.fxml
+    }
+
+
 }
