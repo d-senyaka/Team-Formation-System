@@ -303,6 +303,131 @@ public class TeamFormationService {
 
 
 
+
+
+    /**
+     * Full team formation pipeline:
+     *  1) Role-first distribution
+     *  2) Rebalancing using penalty-based swaps
+     */
+    public List<Team> formBalancedTeams(List<Participant> participants, int teamSize) {
+        if (participants == null || participants.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        // Step 1: initial teams (role-focused)
+        List<Team> teams = formInitialTeamsByRole(participants, teamSize);
+
+        // Step 2: compute global average skill
+        double globalAverageSkill = calculateGlobalAverageSkill(participants);
+
+        // Step 3: rebalance teams to reduce penalties
+        rebalanceTeams(teams, globalAverageSkill, teamSize, 30);
+
+        return teams;
+    }
+
+
+    /**
+     * Try to improve team balance using simple swap-based optimisation.
+     * For a limited number of iterations:
+     *  - find the worst (highest penalty) team
+     *  - find the best (lowest penalty) team
+     *  - try swapping members between them to reduce total penalty
+     */
+    private void rebalanceTeams(List<Team> teams,
+                                double globalAverageSkill,
+                                int teamSize,
+                                int maxIterations) {
+
+        if (teams == null || teams.size() < 2) {
+            return;
+        }
+
+        for (int iter = 0; iter < maxIterations; iter++) {
+
+            // 1) Compute penalties for all teams
+            Team worstTeam = null;
+            Team bestTeam = null;
+            double worstPenalty = Double.NEGATIVE_INFINITY;
+            double bestPenalty = Double.POSITIVE_INFINITY;
+
+            for (Team team : teams) {
+                double penalty = computeTeamPenalty(team, globalAverageSkill);
+
+                if (penalty > worstPenalty) {
+                    worstPenalty = penalty;
+                    worstTeam = team;
+                }
+                if (penalty < bestPenalty) {
+                    bestPenalty = penalty;
+                    bestTeam = team;
+                }
+            }
+
+            if (worstTeam == null || bestTeam == null || worstTeam == bestTeam) {
+                return; // nothing to optimise
+            }
+
+            // 2) Try all pairwise swaps between worstTeam and bestTeam
+            double currentTotalPenalty =
+                    computeTeamPenalty(worstTeam, globalAverageSkill) +
+                            computeTeamPenalty(bestTeam, globalAverageSkill);
+
+            double bestImprovement = 0;
+            Participant bestA = null;
+            Participant bestB = null;
+
+            List<Participant> worstMembers = new ArrayList<>(worstTeam.getMembers());
+            List<Participant> bestMembers = new ArrayList<>(bestTeam.getMembers());
+
+            for (Participant a : worstMembers) {
+                for (Participant b : bestMembers) {
+
+                    // Simulate swap
+                    worstTeam.getMembers().remove(a);
+                    bestTeam.getMembers().remove(b);
+
+                    worstTeam.addMember(b);
+                    bestTeam.addMember(a);
+
+                    double newTotalPenalty =
+                            computeTeamPenalty(worstTeam, globalAverageSkill) +
+                                    computeTeamPenalty(bestTeam, globalAverageSkill);
+
+                    double improvement = currentTotalPenalty - newTotalPenalty;
+
+                    // Revert swap
+                    worstTeam.getMembers().remove(b);
+                    bestTeam.getMembers().remove(a);
+
+                    worstTeam.addMember(a);
+                    bestTeam.addMember(b);
+
+                    if (improvement > bestImprovement) {
+                        bestImprovement = improvement;
+                        bestA = a;
+                        bestB = b;
+                    }
+                }
+            }
+
+            // 3) If we found an improving swap, apply it
+            if (bestImprovement > 0 && bestA != null && bestB != null) {
+                worstTeam.getMembers().remove(bestA);
+                bestTeam.getMembers().remove(bestB);
+
+                worstTeam.addMember(bestB);
+                bestTeam.addMember(bestA);
+            } else {
+                // No improving swap found - stop early
+                return;
+            }
+        }
+    }
+
+
+
 }
 
 
