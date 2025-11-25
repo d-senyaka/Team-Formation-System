@@ -2,6 +2,7 @@ package com.teame.controller.common;
 
 import com.teame.config.AppConfig;
 import com.teame.controller.participant.ParticipantLoginController;
+import com.teame.controller.participant.SurveyController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
@@ -39,6 +40,22 @@ public class RootLayoutController {
 
     // This will be used by the login controller
     public void showParticipantSurvey() {
-        // We will implement this in Phase 6.3
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/participant/participant_survey.fxml"));
+            Node view = loader.load();
+
+            SurveyController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Will be implemented properly in 6.4
+    public void showParticipantRoleGameSkill() {
+        // TODO: load participant_role_game_skill.fxml in Phase 6.4
     }
 }
