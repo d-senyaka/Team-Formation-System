@@ -2,6 +2,8 @@ package com.teame.service;
 
 import com.teame.model.Team;
 
+import java.util.stream.Collectors;
+
 
 import com.teame.model.Participant;
 import com.teame.model.enums.GameType;
@@ -162,6 +164,143 @@ public class TeamFormationService {
             }
         }
     }
+
+    /**
+     * Calculate the global average skill across all participants.
+     * Used as a reference when balancing team strength.
+     */
+    public double calculateGlobalAverageSkill(List<Participant> participants) {
+        if (participants == null || participants.isEmpty()) {
+            return 0.0;
+        }
+        return participants.stream()
+                .mapToInt(Participant::getSkillLevel)
+                .average()
+                .orElse(0.0);
+    }
+
+
+    /**
+     * Compute a penalty score if we add participant p to team t.
+     * Lower penalty = better fit.
+     *
+     * We penalise things like:
+     *  - Overfilling the team
+     *  - Too many of the same game
+     *  - Poor personality mix
+     *  - Skill average drifting far from global average
+     */
+    public double computePenaltyIfAdded(Team team,
+                                        Participant p,
+                                        int teamSize,
+                                        double globalAverageSkill) {
+
+        // Hard block: if this would overfill the team, give a huge penalty.
+        if (team.size() >= teamSize) {
+            return 1_000_000; // effectively "impossible"
+        }
+
+        // Simulate team members after adding p
+        List<Participant> tempMembers = new ArrayList<>(team.getMembers());
+        tempMembers.add(p);
+
+        // --- Game diversity: max 2 of same game ---
+        long sameGameCount = tempMembers.stream()
+                .filter(m -> m.getPreferredGame() == p.getPreferredGame())
+                .count();
+
+        double gamePenalty = 0;
+        if (sameGameCount > 2) {
+            gamePenalty += 5 * (sameGameCount - 2); // more than 2 → rising penalty
+        }
+
+        // --- Personality mix ---
+        long leaders = tempMembers.stream()
+                .filter(m -> m.getPersonalityType() == PersonalityType.LEADER)
+                .count();
+        long thinkers = tempMembers.stream()
+                .filter(m -> m.getPersonalityType() == PersonalityType.THINKER)
+                .count();
+        long balanced = tempMembers.stream()
+                .filter(m -> m.getPersonalityType() == PersonalityType.BALANCED)
+                .count();
+
+        double personalityPenalty = 0;
+
+        // Prefer at least 1 leader
+        if (leaders == 0) personalityPenalty += 3;
+        // Too many leaders? (e.g. >2)
+        if (leaders > 2) personalityPenalty += 4 * (leaders - 2);
+
+        // Prefer at least 1 thinker
+        if (thinkers == 0) personalityPenalty += 2;
+
+        // Prefer at least 1 balanced
+        if (balanced == 0) personalityPenalty += 2;
+
+        // --- Skill balance vs global average ---
+        double teamAverageSkill = tempMembers.stream()
+                .mapToInt(Participant::getSkillLevel)
+                .average()
+                .orElse(globalAverageSkill);
+
+        double skillDiff = Math.abs(teamAverageSkill - globalAverageSkill);
+        double skillPenalty = skillDiff;  // 1 point penalty per skill difference
+
+        // Total penalty is a weighted sum
+        return gamePenalty + personalityPenalty + skillPenalty;
+    }
+
+
+    /**
+     * Compute the penalty of the current team configuration.
+     * Useful when comparing two teams or considering swaps.
+     */
+    public double computeTeamPenalty(Team team, double globalAverageSkill) {
+        List<Participant> members = team.getMembers();
+        if (members.isEmpty()) return 100; // empty team is not useful
+
+        long leaders = members.stream()
+                .filter(m -> m.getPersonalityType() == PersonalityType.LEADER)
+                .count();
+        long thinkers = members.stream()
+                .filter(m -> m.getPersonalityType() == PersonalityType.THINKER)
+                .count();
+        long balanced = members.stream()
+                .filter(m -> m.getPersonalityType() == PersonalityType.BALANCED)
+                .count();
+
+        double personalityPenalty = 0;
+        if (leaders == 0) personalityPenalty += 3;
+        if (leaders > 2) personalityPenalty += 4 * (leaders - 2);
+        if (thinkers == 0) personalityPenalty += 2;
+        if (balanced == 0) personalityPenalty += 2;
+
+        // Game diversity penalty: games with >2 members
+        Map<GameType, Long> gameCounts = members.stream()
+                .filter(m -> m.getPreferredGame() != null)
+                .collect(Collectors.groupingBy(
+                        Participant::getPreferredGame,
+                        Collectors.counting()
+                ));
+
+        double gamePenalty = 0;
+        for (long count : gameCounts.values()) {
+            if (count > 2) {
+                gamePenalty += 5 * (count - 2);
+            }
+        }
+
+        double avgSkill = members.stream()
+                .mapToInt(Participant::getSkillLevel)
+                .average()
+                .orElse(globalAverageSkill);
+
+        double skillPenalty = Math.abs(avgSkill - globalAverageSkill);
+
+        return personalityPenalty + gamePenalty + skillPenalty;
+    }
+
 
 
 }
