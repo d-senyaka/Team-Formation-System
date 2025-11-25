@@ -188,7 +188,7 @@ public class TeamFormationService {
      *  - Overfilling the team
      *  - Too many of the same game
      *  - Poor personality mix
-     *  - Skill average drifting far from global average
+     *  - Skill average drifting far from global average (heavily weighted)
      */
     public double computePenaltyIfAdded(Team team,
                                         Participant p,
@@ -238,23 +238,27 @@ public class TeamFormationService {
         // Prefer at least 1 balanced
         if (balanced == 0) personalityPenalty += 2;
 
-        // --- Skill balance vs global average ---
+        // --- Skill balance vs global average (MORE IMPORTANT NOW) ---
         double teamAverageSkill = tempMembers.stream()
                 .mapToInt(Participant::getSkillLevel)
                 .average()
                 .orElse(globalAverageSkill);
 
         double skillDiff = Math.abs(teamAverageSkill - globalAverageSkill);
-        double skillPenalty = skillDiff;  // 1 point penalty per skill difference
+
+        // Increase weight: skill fairness matters more (3x)
+        double skillPenalty = 3 * skillDiff;
 
         // Total penalty is a weighted sum
         return gamePenalty + personalityPenalty + skillPenalty;
     }
 
 
+
     /**
      * Compute the penalty of the current team configuration.
      * Useful when comparing two teams or considering swaps.
+     * Skill balance is weighted higher to avoid extreme teams.
      */
     public double computeTeamPenalty(Team team, double globalAverageSkill) {
         List<Participant> members = team.getMembers();
@@ -296,10 +300,14 @@ public class TeamFormationService {
                 .average()
                 .orElse(globalAverageSkill);
 
-        double skillPenalty = Math.abs(avgSkill - globalAverageSkill);
+        double skillDiff = Math.abs(avgSkill - globalAverageSkill);
+
+        // Increase weight of skill difference here as well (3x)
+        double skillPenalty = 3 * skillDiff;
 
         return personalityPenalty + gamePenalty + skillPenalty;
     }
+
 
 
 
