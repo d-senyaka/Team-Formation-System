@@ -13,6 +13,16 @@ import java.util.*;
  */
 public class TeamFormationService {
 
+
+    /**
+     * Sort each bucket (List<Participant>) by skill level in descending order.
+     */
+    public void sortBucketsBySkill(Map<?, List<Participant>> bucketMap) {
+        for (List<Participant> list : bucketMap.values()) {
+            list.sort((a, b) -> Integer.compare(b.getSkillLevel(), a.getSkillLevel()));
+        }
+    }
+
     /**
      * Bucket participants by their preferred role.
      */
@@ -70,4 +80,5 @@ public class TeamFormationService {
         return map;
     }
 }
+
 
