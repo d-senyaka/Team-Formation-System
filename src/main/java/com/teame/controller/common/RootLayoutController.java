@@ -1,16 +1,9 @@
 package com.teame.controller.common;
 
+import com.teame.controller.organizer.*;
 import com.teame.controller.participant.RoleGameSkillController;
 
 import com.teame.controller.participant.ParticipantCompleteController;
-
-import com.teame.controller.organizer.OrganizerDashboardController;
-
-import com.teame.controller.organizer.DataSourceController;
-
-import com.teame.controller.organizer.InvalidRowsController;
-
-import com.teame.controller.organizer.TeamFormationController;
 
 import com.teame.config.AppConfig;
 import com.teame.controller.participant.ParticipantLoginController;
@@ -166,8 +159,20 @@ public class RootLayoutController {
 
 
     public void showOrganizerViewTeams() {
-        // TODO in 7.6
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/organizer/organizer_view_teams.fxml"));
+            Node view = loader.load();
+
+            ViewTeamsController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
 
 
