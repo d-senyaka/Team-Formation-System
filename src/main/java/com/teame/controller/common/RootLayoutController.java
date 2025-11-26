@@ -1,9 +1,9 @@
 package com.teame.controller.common;
 
+import com.teame.controller.organizer.*;
 import com.teame.controller.participant.RoleGameSkillController;
 
 import com.teame.controller.participant.ParticipantCompleteController;
-
 
 import com.teame.config.AppConfig;
 import com.teame.controller.participant.ParticipantLoginController;
@@ -94,26 +94,85 @@ public class RootLayoutController {
         }
     }
 
-    // Organizer entry point (we'll make a dashboard in 7.2)
     public void showOrganizerDashboard() {
-        // TODO: load organizer_dashboard.fxml and inject AppConfig + this
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/organizer/organizer_dashboard.fxml"));
+            Node view = loader.load();
+
+            OrganizerDashboardController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public void showOrganizerDataSource() {
-        // TODO in 7.3
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/organizer/organizer_data_source.fxml"));
+            Node view = loader.load();
+
+            DataSourceController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public void showOrganizerInvalidRows() {
-        // TODO in 7.4
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/organizer/organizer_invalid_rows.fxml"));
+            Node view = loader.load();
+
+            InvalidRowsController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public void showOrganizerTeamFormation() {
-        // TODO in 7.5
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/organizer/organizer_team_formation.fxml"));
+            Node view = loader.load();
+
+            TeamFormationController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+
     public void showOrganizerViewTeams() {
-        // TODO in 7.6
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/organizer/organizer_view_teams.fxml"));
+            Node view = loader.load();
+
+            ViewTeamsController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
 
 

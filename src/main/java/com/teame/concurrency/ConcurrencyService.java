@@ -9,6 +9,7 @@ import com.teame.service.ValidationService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.Collections;
 
 /**
  * Handles parallel processing of participant records using a thread pool.

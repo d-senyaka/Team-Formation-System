@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teame.controller.organizer.TeamFormationController">
+
+    <children>
+        <VBox spacing="12.0" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0"
+              AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="20.0">
+
+            <Label text="Team Formation"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <Label text="Specify team size and form balanced teams from cleaned participants." />
+
+            <GridPane hgap="8" vgap="6">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="150" halignment="RIGHT"/>
+                    <ColumnConstraints prefWidth="260"/>
+                </columnConstraints>
+
+                <children>
+                    <Label text="Valid participants:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <Label fx:id="validCountLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Team size:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="teamSizeField" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                               promptText="e.g. 5"/>
+
+                    <Label text="Estimated teams:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <Label fx:id="estimatedTeamsLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <Label text="Last formation:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <Label fx:id="statusLabel" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                </children>
+            </GridPane>
+
+            <HBox spacing="10">
+                <Button text="Form Teams" onAction="#handleFormTeams"/>
+                <Button text="Back to Dashboard" onAction="#handleBackToDashboard"/>
+            </HBox>
+
+            <Label fx:id="errorLabel" textFill="red"/>
+        </VBox>
+    </children>
+</AnchorPane>
