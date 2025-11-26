@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.teame.controller.participant.ParticipantLoginController">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teame.controller.participant.ParticipantLoginController">
 
     <children>
-        <VBox spacing="20.0" AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="60.0"
-              AnchorPane.rightAnchor="60.0" AnchorPane.bottomAnchor="40.0">
+        <VBox spacing="20.0" styleClass="login-container" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="30.0">
 
             <!-- Project Title Section -->
             <VBox spacing="5">
-                <Label text="Intelligent Team Formation System"
-                       style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+                <Label styleClass="app-title" text="Intelligent Team Formation System" />
 
-                <Label text="Automatically create balanced teams using personality, roles, and skills."
-                       style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+                <Label styleClass="app-subtitle" text="Automatically create balanced teams using personality, roles, and skills." />
             </VBox>
 
-            <Separator/>
+            <Separator />
 
             <!-- Existing Login Title -->
-            <Label text="Participant Login" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label styleClass="section-title" text="Participant Login" />
 
             <!-- Participant ID -->
-            <Label text="Participant ID:"/>
-            <TextField fx:id="idField" promptText="e.g. P001"/>
+            <Label styleClass="field-label" text="Participant ID:" />
+            <TextField fx:id="idField" promptText="e.g. P001" styleClass="input-field" />
 
             <!-- Email -->
-            <Label text="Email:"/>
-            <TextField fx:id="emailField" promptText="user@university.edu"/>
+            <Label styleClass="field-label" text="Email:" />
+            <TextField fx:id="emailField" promptText="user@university.edu" styleClass="input-field" />
 
             <!-- Error Label -->
-            <Label fx:id="errorLabel" textFill="red"/>
+            <Label fx:id="errorLabel" styleClass="error-label" />
 
             <!-- Buttons -->
-            <HBox spacing="10" alignment="CENTER_RIGHT">
-                <Button text="Create Account" onAction="#handleCreateAccount"/>
-                <Button text="Login" onAction="#handleLogin"/>
-                <Button text="Organizer Mode" onAction="#handleOrganizerMode"/>
-                <Button text="Exit" onAction="#handleExit"/>
-
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button onAction="#handleCreateAccount" styleClass="primary-button" text="Create Account" />
+                <Button onAction="#handleLogin" styleClass="primary-button" text="Login" />
+                <Button onAction="#handleOrganizerMode" styleClass="secondary-button" text="Organizer Mode" />
+                <Button onAction="#handleExit" styleClass="danger-button" text="Exit" />
             </HBox>
 
         </VBox>
-
     </children>
+   <stylesheets>
+
+      <URL value="@../../css/login.css" />
+   </stylesheets>
 </AnchorPane>
