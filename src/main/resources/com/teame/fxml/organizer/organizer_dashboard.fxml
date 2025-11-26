@@ -1,43 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.teame.controller.organizer.OrganizerDashboardController">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teame.controller.organizer.OrganizerDashboardController">
 
     <children>
-        <VBox spacing="16.0" AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="40.0"
-              AnchorPane.rightAnchor="40.0" AnchorPane.bottomAnchor="30.0">
+        <VBox spacing="16.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0">
 
-            <Label text="Organizer Dashboard"
-                   style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+            <Label style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Organizer Dashboard" />
 
             <Label text="Manage participants, handle invalid rows, form and view teams." />
 
-            <Separator/>
+            <Separator />
 
             <VBox spacing="10">
-                <Button text="1. Data Source / Load Participants"
-                        onAction="#handleOpenDataSource" prefWidth="260"/>
+                <Button onAction="#handleOpenDataSource" prefWidth="260" text="1. Data Source / Load Participants" />
 
-                <Button text="2. View / Fix Invalid Rows"
-                        onAction="#handleOpenInvalidRows" prefWidth="260"/>
+                <Button onAction="#handleOpenInvalidRows" prefWidth="260" text="2. View / Fix Invalid Rows" />
 
-                <Button text="3. Form Teams"
-                        onAction="#handleOpenTeamFormation" prefWidth="260"/>
+                <Button onAction="#handleOpenTeamFormation" prefWidth="260" text="3. Form Teams" />
 
-                <Button text="4. View and Export Teams"
-                        onAction="#handleOpenViewTeams" prefWidth="260"/>
+                <Button onAction="#handleOpenViewTeams" prefWidth="260" text="4. View and Export Teams" />
             </VBox>
 
-            <Separator/>
+            <Separator />
 
             <HBox spacing="10">
-                <Button text="Back to Participant Login"
-                        onAction="#handleBackToParticipant"/>
+                <Button onAction="#handleBackToParticipant" text="Back to Main Menu" />
             </HBox>
         </VBox>
     </children>
