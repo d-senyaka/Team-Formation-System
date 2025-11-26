@@ -12,8 +12,14 @@ import java.util.List;
 
 public class CsvTeamRepository implements TeamRepository {
 
+    private final String filePath;
+
+    public CsvTeamRepository(String filePath) {
+        this.filePath = filePath;
+    }
+
     @Override
-    public void saveAll(String filePath, List<Team> teams) {
+    public void saveAll(List<Team> teams) {
         List<String> lines = new ArrayList<>();
 
         // CSV header

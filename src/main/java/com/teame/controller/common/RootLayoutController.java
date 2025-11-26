@@ -94,6 +94,27 @@ public class RootLayoutController {
         }
     }
 
+    // Organizer entry point (we'll make a dashboard in 7.2)
+    public void showOrganizerDashboard() {
+        // TODO: load organizer_dashboard.fxml and inject AppConfig + this
+    }
+
+    public void showOrganizerDataSource() {
+        // TODO in 7.3
+    }
+
+    public void showOrganizerInvalidRows() {
+        // TODO in 7.4
+    }
+
+    public void showOrganizerTeamFormation() {
+        // TODO in 7.5
+    }
+
+    public void showOrganizerViewTeams() {
+        // TODO in 7.6
+    }
+
 
 
 }
