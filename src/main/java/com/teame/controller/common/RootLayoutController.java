@@ -10,6 +10,7 @@ import com.teame.controller.organizer.DataSourceController;
 
 import com.teame.controller.organizer.InvalidRowsController;
 
+import com.teame.controller.organizer.TeamFormationController;
 
 import com.teame.config.AppConfig;
 import com.teame.controller.participant.ParticipantLoginController;
@@ -149,8 +150,20 @@ public class RootLayoutController {
 
 
     public void showOrganizerTeamFormation() {
-        // TODO in 7.5
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/organizer/organizer_team_formation.fxml"));
+            Node view = loader.load();
+
+            TeamFormationController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public void showOrganizerViewTeams() {
         // TODO in 7.6
