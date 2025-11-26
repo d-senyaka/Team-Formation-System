@@ -8,6 +8,8 @@ import com.teame.controller.organizer.OrganizerDashboardController;
 
 import com.teame.controller.organizer.DataSourceController;
 
+import com.teame.controller.organizer.InvalidRowsController;
+
 
 import com.teame.config.AppConfig;
 import com.teame.controller.participant.ParticipantLoginController;
@@ -131,8 +133,20 @@ public class RootLayoutController {
 
 
     public void showOrganizerInvalidRows() {
-        // TODO in 7.4
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/organizer/organizer_invalid_rows.fxml"));
+            Node view = loader.load();
+
+            InvalidRowsController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public void showOrganizerTeamFormation() {
         // TODO in 7.5
