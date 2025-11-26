@@ -2,6 +2,8 @@ package com.teame.controller.common;
 
 import com.teame.controller.participant.RoleGameSkillController;
 
+import com.teame.controller.participant.ParticipantCompleteController;
+
 
 import com.teame.config.AppConfig;
 import com.teame.controller.participant.ParticipantLoginController;
@@ -72,9 +74,26 @@ public class RootLayoutController {
         }
     }
 
-    public void showParticipantComplete() {
-        // TODO: implement in 6.5 – load participant_complete.fxml
+    public BorderPane getRootLayout() {
+        return rootLayout;
     }
+
+
+    public void showParticipantComplete() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/participant/participant_complete.fxml"));
+            Node view = loader.load();
+
+            ParticipantCompleteController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

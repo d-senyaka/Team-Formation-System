@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teame.controller.participant.ParticipantCompleteController">
+
+    <children>
+        <VBox spacing="16.0" AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="40.0"
+              AnchorPane.rightAnchor="40.0" AnchorPane.bottomAnchor="30.0">
+
+            <Label text="Thank You!"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+            <Label text="Your details have been saved for team formation." />
+
+            <Separator/>
+
+            <GridPane hgap="10" vgap="6">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT" prefWidth="120"/>
+                    <ColumnConstraints prefWidth="260"/>
+                </columnConstraints>
+
+                <children>
+                    <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <Label fx:id="idLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <Label fx:id="nameLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <Label fx:id="emailLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <Label text="Personality:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <Label fx:id="personalityLabel" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                    <Label text="Preferred Role:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    <Label fx:id="roleLabel" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                    <Label text="Preferred Game:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                    <Label fx:id="gameLabel" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                    <Label text="Skill Level:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                    <Label fx:id="skillLabel" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                </children>
+            </GridPane>
+
+            <HBox spacing="10">
+                <Button text="Back to Login" onAction="#handleBackToLogin"/>
+                <Button text="Exit" onAction="#handleExit"/>
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>
