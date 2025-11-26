@@ -9,6 +9,7 @@ import com.teame.service.ValidationService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.Collections;
 
 /**
  * Handles parallel processing of participant records using a thread pool.
@@ -37,7 +38,8 @@ public class ConcurrencyService {
 
         for (int i = 0; i < participants.size(); i++) {
             Participant p = participants.get(i);
-            String rawLine = rawLines.get(i + 1); // +1 because line 0 = header
+            // NEW: rawLines already has header removed, so use i directly
+            String rawLine = rawLines.get(i);
 
             tasks.add(new ParticipantProcessingTask(
                     p,

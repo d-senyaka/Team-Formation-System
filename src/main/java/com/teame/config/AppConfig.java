@@ -1,6 +1,7 @@
 package com.teame.config;
 
 import com.teame.repository.CsvParticipantRepository;
+import com.teame.repository.ParticipantRepository;
 import com.teame.service.ParticipantService;
 import com.teame.service.ParticipantSession;
 import com.teame.service.PersonalityService;
@@ -71,4 +72,16 @@ public class AppConfig {
     public TeamRepository getTeamRepository() {
         return teamRepository;
     }
+
+    public ParticipantRepository getParticipantRepository() {
+        return participantRepository;
+    }
+
+    public String getParticipantsFilePath() {
+        return PARTICIPANTS_FILE;
+    }
+
+
+
+
 }

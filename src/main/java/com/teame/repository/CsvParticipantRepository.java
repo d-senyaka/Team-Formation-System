@@ -27,7 +27,11 @@ public class CsvParticipantRepository implements ParticipantRepository {
 
     @Override
     public ParticipantLoadResult loadAll(String filePath) {
-        List<String> lines = CsvUtils.readAllLines(filePath);
+        // Your CSV header — adjust to match your actual field order
+        String header = "ID,Name,Email,PreferredGame,SkillLevel,PreferredRole,PersonalityScore,PersonalityType";
+
+        List<String> lines = CsvUtils.readAllLines(filePath, header);
+
 
         List<Participant> validParticipants = new ArrayList<>();
         List<InvalidRow> invalidRows = new ArrayList<>();

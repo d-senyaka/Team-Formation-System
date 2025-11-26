@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teame.controller.organizer.DataSourceController">
+
+    <children>
+        <VBox spacing="14.0" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="30.0"
+              AnchorPane.rightAnchor="30.0" AnchorPane.bottomAnchor="20.0">
+
+            <Label text="Data Source / Participant Loader"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <Label text="Load participant CSV, run preprocessing, and store clean + invalid rows." />
+
+            <Separator/>
+
+            <HBox spacing="10">
+                <Button text="Load default participants_saved.csv"
+                        onAction="#handleLoadDefault"/>
+                <Button text="Load external CSV..."
+                        onAction="#handleLoadExternal"/>
+            </HBox>
+
+            <Separator/>
+
+            <GridPane hgap="8" vgap="6">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="140" halignment="RIGHT"/>
+                    <ColumnConstraints prefWidth="340"/>
+                </columnConstraints>
+
+                <children>
+                    <Label text="Source file:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <Label fx:id="sourceFileLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Valid participants:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <Label fx:id="validCountLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Invalid rows:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <Label fx:id="invalidCountLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                </children>
+            </GridPane>
+
+            <Label fx:id="errorLabel" textFill="red"/>
+
+            <HBox spacing="10">
+                <Button text="Back to Dashboard" onAction="#handleBackToDashboard"/>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>
