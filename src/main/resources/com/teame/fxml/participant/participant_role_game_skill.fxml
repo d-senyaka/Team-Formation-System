@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.teame.controller.participant.RoleGameSkillController">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teame.controller.participant.RoleGameSkillController">
 
     <children>
-        <VBox spacing="14.0" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="40.0"
-              AnchorPane.rightAnchor="40.0" AnchorPane.bottomAnchor="20.0">
+        <VBox spacing="14.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0">
 
-            <Label text="Preferred Role, Game and Skill"
-                   style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Preferred Role, Game and Skill" />
 
             <Label text="Choose the role and game you prefer playing in a team." />
 
             <!-- Role -->
-            <Label text="Preferred Team Role:"/>
-            <ComboBox fx:id="roleCombo" prefWidth="250"/>
+            <Label text="Preferred Team Role:" />
+            <ComboBox fx:id="roleCombo" prefWidth="250" />
 
             <!-- Game -->
-            <Label text="Preferred Game:"/>
-            <ComboBox fx:id="gameCombo" prefWidth="250"/>
+            <Label text="Preferred Game:" />
+            <ComboBox fx:id="gameCombo" prefWidth="250" />
 
             <!-- Skill -->
-            <Label text="Self-rated Skill Level (1 = Beginner, 10 = Expert):"/>
-            <Slider fx:id="skillSlider" min="1" max="10" value="5"
-                    majorTickUnit="1" minorTickCount="0"
-                    showTickMarks="true" showTickLabels="true"
-                    blockIncrement="1" snapToTicks="true" />
+            <Label text="Self-rated Skill Level (1 = Beginner, 10 = Expert):" />
+            <Slider fx:id="skillSlider" blockIncrement="1" majorTickUnit="1" max="10" min="1" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5" />
 
-            <Label fx:id="errorLabel" textFill="red"/>
-            <Label fx:id="infoLabel"/>
+            <Label fx:id="errorLabel" textFill="red" />
+            <Label fx:id="infoLabel" />
 
             <HBox spacing="10">
-                <Button text="Back to Survey" onAction="#handleBackToSurvey"/>
-                <Button text="Save" onAction="#handleSave"/>
+                <Button onAction="#handleSave" text="Save" />
             </HBox>
 
         </VBox>

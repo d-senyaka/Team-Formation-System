@@ -38,7 +38,8 @@ public class ConcurrencyService {
 
         for (int i = 0; i < participants.size(); i++) {
             Participant p = participants.get(i);
-            String rawLine = rawLines.get(i + 1); // +1 because line 0 = header
+            // NEW: rawLines already has header removed, so use i directly
+            String rawLine = rawLines.get(i);
 
             tasks.add(new ParticipantProcessingTask(
                     p,

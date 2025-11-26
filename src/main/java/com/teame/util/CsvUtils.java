@@ -15,13 +15,46 @@ public class CsvUtils {
      * Read all lines from a CSV file.
      * Returns a list of strings (each representing a row).
      */
+
     public static List<String> readAllLines(String filePath) {
         try {
-            return Files.readAllLines(Path.of(filePath));
+            Path path = Path.of(filePath);
+
+            // If the file doesn't exist, just return empty – DO NOT create anything here
+            if (!Files.exists(path)) {
+                return new ArrayList<>();
+            }
+
+            return Files.readAllLines(path);
         } catch (IOException e) {
             throw new RuntimeException("Error reading CSV file: " + filePath, e);
         }
     }
+
+
+    public static List<String> readAllLines(String filePath, String headerRow) {
+        try {
+            Path path = Path.of(filePath);
+
+            // If file does NOT exist → create it with the header
+            if (!Files.exists(path)) {
+                Files.createDirectories(path.getParent());
+
+                List<String> initContent = new ArrayList<>();
+                initContent.add(headerRow);
+                Files.write(path, initContent);
+
+                return new ArrayList<>(); // no data rows yet
+            }
+
+            // File exists → read normally
+            return Files.readAllLines(path);
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading CSV file: " + filePath, e);
+        }
+    }
+
+
 
     /**
      * Write a list of lines to a CSV file, overwriting any existing content.

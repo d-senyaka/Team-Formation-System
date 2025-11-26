@@ -1,5 +1,6 @@
 package com.teame.service;
 
+import com.teame.exception.ValidationException;
 import com.teame.model.Participant;
 import com.teame.repository.CsvParticipantRepository;
 import com.teame.repository.ParticipantLoadResult;
@@ -66,4 +67,57 @@ public class ParticipantService {
 
         return p;
     }
+
+    public Participant createNewParticipant(String id, String email) {
+        List<Participant> all = loadAll();
+
+        // 1. Same ID + same email → already has an account
+        for (Participant p : all) {
+            if (p.getId().equalsIgnoreCase(id) &&
+                    p.getEmail().equalsIgnoreCase(email)) {
+
+                throw new ValidationException(
+                        "An account already exists for this ID and email. " +
+                                "Please use the Login button instead."
+                );
+            }
+        }
+
+        // 2. Same ID + different email → suspicious / typo
+        for (Participant p : all) {
+            if (p.getId().equalsIgnoreCase(id) &&
+                    !p.getEmail().equalsIgnoreCase(email)) {
+
+                throw new ValidationException(
+                        "This participant ID is already used with another email. " +
+                                "Please check your ID."
+                );
+            }
+        }
+
+        // 3. Different ID + same email → not allowed (one account per email)
+        for (Participant p : all) {
+            if (!p.getId().equalsIgnoreCase(id) &&
+                    p.getEmail().equalsIgnoreCase(email)) {
+
+                throw new ValidationException(
+                        "This email address is already registered with another participant ID. " +
+                                "Please check your ID or email."
+                );
+            }
+        }
+
+        // 4. All clear → create new participant
+        Participant newP = new Participant();
+        newP.setId(id);
+        newP.setEmail(email);
+        newP.setName(id); // or "" or ask later
+
+        all.add(newP);
+        saveAll(all);
+
+        return newP;
+    }
+
+
 }

@@ -12,19 +12,26 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Node;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class RootLayoutController {
 
+
+
     @FXML
     private BorderPane rootLayout; // make sure your root_layout.fxml has fx:id="rootLayout"
 
-    private final AppConfig appConfig = new AppConfig();
+    private AppConfig appConfig;
+
+    public void init(AppConfig appConfig) {
+        this.appConfig = appConfig;
+    }
 
     public void initialize() {
-        // Optionally show login on startup
-        showParticipantLogin();
+        // Do not show any screen here.
+        // Main will decide what the first screen is after injecting AppConfig.
     }
 
     public void showParticipantLogin() {
@@ -172,6 +179,19 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+
+    private Stage primaryStage;
+
+    public void setPrimaryStage(Stage stage) {
+        this.primaryStage = stage;
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+
+
 
 
 
