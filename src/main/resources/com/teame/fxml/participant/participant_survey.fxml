@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teame.controller.participant.SurveyController">
+
+    <children>
+        <VBox spacing="16.0" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="40.0"
+              AnchorPane.rightAnchor="40.0" AnchorPane.bottomAnchor="20.0">
+            <Label text="Gaming and Personality Survey"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <Label text="Please answer each question from 1 (Strongly Disagree) to 5 (Strongly Agree)." />
+
+            <VBox spacing="10">
+                <Label text="Q1: I enjoy leading and coordinating my team."/>
+                <Slider fx:id="q1Slider" min="1" max="5" value="3" majorTickUnit="1"
+                        minorTickCount="0" blockIncrement="1" snapToTicks="true"
+                        showTickMarks="true" showTickLabels="true"/>
+
+                <Label text="Q2: I like planning strategies before acting."/>
+                <Slider fx:id="q2Slider" min="1" max="5" value="3" majorTickUnit="1"
+                        minorTickCount="0" blockIncrement="1" snapToTicks="true"
+                        showTickMarks="true" showTickLabels="true"/>
+
+                <Label text="Q3: I stay calm and think logically under pressure."/>
+                <Slider fx:id="q3Slider" min="1" max="5" value="3" majorTickUnit="1"
+                        minorTickCount="0" blockIncrement="1" snapToTicks="true"
+                        showTickMarks="true" showTickLabels="true"/>
+
+                <Label text="Q4: I prefer to support others rather than be in the spotlight."/>
+                <Slider fx:id="q4Slider" min="1" max="5" value="3" majorTickUnit="1"
+                        minorTickCount="0" blockIncrement="1" snapToTicks="true"
+                        showTickMarks="true" showTickLabels="true"/>
+
+                <Label text="Q5: I like analysing moves and predicting outcomes."/>
+                <Slider fx:id="q5Slider" min="1" max="5" value="3" majorTickUnit="1"
+                        minorTickCount="0" blockIncrement="1" snapToTicks="true"
+                        showTickMarks="true" showTickLabels="true"/>
+            </VBox>
+
+            <Label fx:id="infoLabel" />
+
+            <HBox spacing="10">
+                <Button text="Back to Login" onAction="#handleBackToLogin"/>
+                <Button text="Next" onAction="#handleNext"/>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

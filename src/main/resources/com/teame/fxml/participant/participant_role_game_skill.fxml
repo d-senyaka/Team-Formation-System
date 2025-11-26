@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.teame.controller.participant.RoleGameSkillController">
+
+    <children>
+        <VBox spacing="14.0" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="40.0"
+              AnchorPane.rightAnchor="40.0" AnchorPane.bottomAnchor="20.0">
+
+            <Label text="Preferred Role, Game and Skill"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <Label text="Choose the role and game you prefer playing in a team." />
+
+            <!-- Role -->
+            <Label text="Preferred Team Role:"/>
+            <ComboBox fx:id="roleCombo" prefWidth="250"/>
+
+            <!-- Game -->
+            <Label text="Preferred Game:"/>
+            <ComboBox fx:id="gameCombo" prefWidth="250"/>
+
+            <!-- Skill -->
+            <Label text="Self-rated Skill Level (1 = Beginner, 10 = Expert):"/>
+            <Slider fx:id="skillSlider" min="1" max="10" value="5"
+                    majorTickUnit="1" minorTickCount="0"
+                    showTickMarks="true" showTickLabels="true"
+                    blockIncrement="1" snapToTicks="true" />
+
+            <Label fx:id="errorLabel" textFill="red"/>
+            <Label fx:id="infoLabel"/>
+
+            <HBox spacing="10">
+                <Button text="Back to Survey" onAction="#handleBackToSurvey"/>
+                <Button text="Save" onAction="#handleSave"/>
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>
