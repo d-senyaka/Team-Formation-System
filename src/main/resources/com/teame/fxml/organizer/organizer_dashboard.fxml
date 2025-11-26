@@ -1,38 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teame.controller.organizer.OrganizerDashboardController">
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.teame.controller.organizer.OrganizerDashboardController"
+            stylesheets="@../../css/dashboard.css">
 
     <children>
-        <VBox spacing="16.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0">
+        <VBox spacing="16.0"
+              AnchorPane.topAnchor="30.0"
+              AnchorPane.bottomAnchor="30.0"
+              AnchorPane.leftAnchor="40.0"
+              AnchorPane.rightAnchor="40.0"
+              styleClass="dashboard-container">
 
-            <Label style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Organizer Dashboard" />
+            <!-- Title -->
+            <Label text="Organizer Dashboard"
+                   styleClass="dashboard-title"/>
 
-            <Label text="Manage participants, handle invalid rows, form and view teams." />
+            <!-- Subtitle -->
+            <Label text="Manage participants, handle invalid rows, form teams, and view team results."
+                   styleClass="dashboard-subtitle"/>
 
-            <Separator />
+            <Separator/>
 
-            <VBox spacing="10">
-                <Button onAction="#handleOpenDataSource" prefWidth="260" text="1. Data Source / Load Participants" />
+            <!-- Action buttons -->
+            <VBox spacing="12">
+                <Button text="1. Data Source / Load Participants"
+                        prefWidth="280"
+                        onAction="#handleOpenDataSource"
+                        styleClass="menu-button"/>
 
-                <Button onAction="#handleOpenInvalidRows" prefWidth="260" text="2. View / Fix Invalid Rows" />
+                <Button text="2. View / Fix Invalid Rows"
+                        prefWidth="280"
+                        onAction="#handleOpenInvalidRows"
+                        styleClass="menu-button"/>
 
-                <Button onAction="#handleOpenTeamFormation" prefWidth="260" text="3. Form Teams" />
+                <Button text="3. Form Teams"
+                        prefWidth="280"
+                        onAction="#handleOpenTeamFormation"
+                        styleClass="menu-button"/>
 
-                <Button onAction="#handleOpenViewTeams" prefWidth="260" text="4. View and Export Teams" />
+                <Button text="4. View and Export Teams"
+                        prefWidth="280"
+                        onAction="#handleOpenViewTeams"
+                        styleClass="menu-button"/>
             </VBox>
 
-            <Separator />
+            <Separator/>
 
-            <HBox spacing="10">
-                <Button onAction="#handleBackToParticipant" text="Back to Main Menu" />
+            <!-- Back button -->
+            <HBox alignment="CENTER_LEFT">
+                <Button text="Back to Main Menu"
+                        onAction="#handleBackToParticipant"
+                        styleClass="back-button"/>
             </HBox>
+
         </VBox>
     </children>
 </AnchorPane>

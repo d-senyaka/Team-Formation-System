@@ -25,14 +25,21 @@ public class Main extends Application {
         AppConfig appConfig = new AppConfig();
         controller.init(appConfig);
 
-        // 3. Show root layout
-        Scene scene = new Scene(rootLayout, 900, 600);
+        // 3. Create scene using the pref size from root_layout.fxml
+        Scene scene = new Scene(rootLayout);
         primaryStage.setTitle("Intelligent Team Formation System");
         primaryStage.setScene(scene);
+
+        // Let the scene (and BorderPane prefWidth/prefHeight) decide size
+        primaryStage.sizeToScene();
+
+        // Optional but recommended: minimum size so user can't shrink too much
+        primaryStage.setMinWidth(900);
+        primaryStage.setMinHeight(600);
+
         primaryStage.show();
 
         // 4. Show first screen (participant login OR organizer dashboard)
-        // For testing: switch between these
         controller.showParticipantLogin();
         // controller.showOrganizerDashboard(); // uncomment to test organizer
     }

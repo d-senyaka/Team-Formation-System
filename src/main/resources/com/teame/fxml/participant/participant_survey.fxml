@@ -1,42 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teame.controller.participant.SurveyController">
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.teame.controller.participant.SurveyController"
+            stylesheets="@../../css/survey.css">
 
     <children>
-        <VBox spacing="16.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0">
-            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Gaming and Personality Survey" />
+        <VBox spacing="12.0"
+              AnchorPane.topAnchor="20.0"
+              AnchorPane.bottomAnchor="20.0"
+              AnchorPane.leftAnchor="40.0"
+              AnchorPane.rightAnchor="40.0"
+              styleClass="survey-container">
 
-            <Label text="Please answer each question from 1 (Strongly Disagree) to 5 (Strongly Agree)." />
 
-            <VBox spacing="10">
-                <Label text="Q1: I enjoy leading and coordinating my team." />
-                <Slider fx:id="q1Slider" blockIncrement="1" majorTickUnit="1" max="5" min="1" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="3" />
+        <!-- Page Title -->
+            <Label text="Gaming and Personality Survey"
+                   styleClass="survey-title"/>
 
-                <Label text="Q2: I like planning strategies before acting." />
-                <Slider fx:id="q2Slider" blockIncrement="1" majorTickUnit="1" max="5" min="1" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="3" />
+            <!-- Subtitle -->
+            <Label text="Please answer each question from 1 (Strongly Disagree) to 5 (Strongly Agree)."
+                   styleClass="survey-subtitle"/>
 
-                <Label text="Q3: I stay calm and think logically under pressure." />
-                <Slider fx:id="q3Slider" blockIncrement="1" majorTickUnit="1" max="5" min="1" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="3" />
+            <!-- Questions Section -->
+            <VBox spacing="14">
 
-                <Label text="Q4: I prefer to support others rather than be in the spotlight." />
-                <Slider fx:id="q4Slider" blockIncrement="1" majorTickUnit="1" max="5" min="1" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="3" />
+                <!-- Q1 -->
+                <Label text="Q1: I enjoy leading and coordinating my team."
+                       styleClass="survey-question-label"/>
+                <Slider fx:id="q1Slider"
+                        min="1" max="5" value="3"
+                        majorTickUnit="1"
+                        snapToTicks="true"
+                        blockIncrement="1"
+                        showTickMarks="true"
+                        showTickLabels="true"
+                        styleClass="survey-slider"/>
 
-                <Label text="Q5: I like analysing moves and predicting outcomes." />
-                <Slider fx:id="q5Slider" blockIncrement="1" majorTickUnit="1" max="5" min="1" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="3" />
+                <!-- Q2 -->
+                <Label text="Q2: I like planning strategies before acting."
+                       styleClass="survey-question-label"/>
+                <Slider fx:id="q2Slider"
+                        min="1" max="5" value="3"
+                        majorTickUnit="1"
+                        snapToTicks="true"
+                        blockIncrement="1"
+                        showTickMarks="true"
+                        showTickLabels="true"
+                        styleClass="survey-slider"/>
+
+                <!-- Q3 -->
+                <Label text="Q3: I stay calm and think logically under pressure."
+                       styleClass="survey-question-label"/>
+                <Slider fx:id="q3Slider"
+                        min="1" max="5" value="3"
+                        majorTickUnit="1"
+                        snapToTicks="true"
+                        blockIncrement="1"
+                        showTickMarks="true"
+                        showTickLabels="true"
+                        styleClass="survey-slider"/>
+
+                <!-- Q4 -->
+                <Label text="Q4: I prefer to support others rather than be in the spotlight."
+                       styleClass="survey-question-label"/>
+                <Slider fx:id="q4Slider"
+                        min="1" max="5" value="3"
+                        majorTickUnit="1"
+                        snapToTicks="true"
+                        blockIncrement="1"
+                        showTickMarks="true"
+                        showTickLabels="true"
+                        styleClass="survey-slider"/>
+
+                <!-- Q5 -->
+                <Label text="Q5: I like analysing moves and predicting outcomes."
+                       styleClass="survey-question-label"/>
+                <Slider fx:id="q5Slider"
+                        min="1" max="5" value="3"
+                        majorTickUnit="1"
+                        snapToTicks="true"
+                        blockIncrement="1"
+                        showTickMarks="true"
+                        showTickLabels="true"
+                        styleClass="survey-slider"/>
+
             </VBox>
 
-            <Label fx:id="infoLabel" />
+            <!-- Info Label -->
+            <Label fx:id="infoLabel" styleClass="survey-info-label"/>
 
-            <HBox spacing="10">
-                <Button onAction="#handleNext" text="Next" />
+            <!-- Buttons -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Next" onAction="#handleNext" styleClass="primary-button"/>
             </HBox>
+
         </VBox>
     </children>
 </AnchorPane>

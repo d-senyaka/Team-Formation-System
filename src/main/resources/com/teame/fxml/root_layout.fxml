@@ -6,7 +6,8 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.teame.controller.common.RootLayoutController"
             fx:id="rootLayout"
-            prefWidth="900.0" prefHeight="600.0">
+            prefWidth="1000.0"
+            prefHeight="720.0">
 
     <!--
       Center is kept empty in FXML.

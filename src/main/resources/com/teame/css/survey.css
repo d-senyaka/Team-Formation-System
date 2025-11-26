@@ -1,0 +1,71 @@
+/* Card-style container for the survey */
+.survey-container {
+    -fx-background-color: white;
+    -fx-padding: 24 32 24 32;
+    -fx-spacing: 16;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #dde1eb;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 16, 0.2, 0, 4);
+}
+
+/* Title + subtitle */
+.survey-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+
+.survey-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b7280;
+}
+
+/* Question labels */
+.survey-question-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #374151;
+}
+
+/* Info / feedback label */
+.survey-info-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b7280;
+}
+
+/* Error-looking info if you ever need it */
+.error-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #dc2626;
+}
+
+/* Sliders – keep them simple, just add a bit of padding */
+.survey-slider {
+    -fx-padding: 4 0 10 0;
+}
+
+/* Button styling – same primary look as other screens */
+.button {
+    -fx-background-radius: 999;
+    -fx-padding: 6 16 6 16;
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #111827;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #d1d5db;
+}
+
+.primary-button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1d4ed8;
+}

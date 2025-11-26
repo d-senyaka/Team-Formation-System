@@ -1,6 +1,6 @@
 ID,Name,Email,PreferredGame,SkillLevel,PreferredRole,PersonalityScore,PersonalityType
 P001,P001,user1@university.edu,Chess,8,Strategist,100,Leader
 P002,P002,user2@university.edu,CS:GO,6,Coordinator,64,Thinker
-p1,p1,1@university.edu,FIFA,5,Strategist,60,Thinker
+p1,p1,1@university.edu,CS:GO,5,Attacker,60,Thinker
 p2,p2,use3@university.edu,CS:GO,4,Coordinator,56,Thinker
 s1,s1,s1@university.edu,DOTA 2,5,Attacker,60,Thinker

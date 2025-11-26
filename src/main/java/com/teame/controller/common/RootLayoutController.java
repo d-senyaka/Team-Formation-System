@@ -10,6 +10,7 @@ import com.teame.controller.participant.ParticipantLoginController;
 import com.teame.controller.participant.SurveyController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Node;
 import javafx.stage.Stage;
@@ -53,18 +54,29 @@ public class RootLayoutController {
     // This will be used by the login controller
     public void showParticipantSurvey() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                    "/com/teame/fxml/participant/participant_survey.fxml"));
-            Node view = loader.load();
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/teame/fxml/participant/participant_survey.fxml"));
+            AnchorPane surveyPane = loader.load();
 
             SurveyController controller = loader.getController();
             controller.init(appConfig, this);
 
-            rootLayout.setCenter(view);
+            rootLayout.setCenter(surveyPane);
+
+            // ⬇️ New: resize window to fit survey, then center it
+            Stage stage = (Stage) rootLayout.getScene().getWindow();
+            stage.sizeToScene();        // adjust height/width to content
+            stage.centerOnScreen();     // optional but nice
+
+            // Optional: enforce a minimum so user can’t shrink it too small
+            stage.setMinWidth(900);
+            stage.setMinHeight(600);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     public void showParticipantRoleGameSkill() {
         try {

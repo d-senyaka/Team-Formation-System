@@ -1,0 +1,76 @@
+/* Background */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
+}
+
+/* Main container */
+.data-source-container {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+    -fx-padding: 26 32 26 32;
+    -fx-spacing: 18;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.18), 22, 0.25, 0, 4);
+}
+
+/* Titles */
+.data-source-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+
+.data-source-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #4b5563;
+}
+
+/* Separator spacing */
+.separator {
+    -fx-padding: 4 0;
+}
+
+/* Buttons */
+.primary-button {
+    -fx-background-color: linear-gradient(to right, #2563EB, #1D4ED8);
+    -fx-text-fill: white;
+    -fx-font-weight: 600;
+    -fx-padding: 8 18;
+    -fx-background-radius: 999;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to right, #1D4ED8, #1E40AF);
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 999;
+    -fx-text-fill: #374151;
+    -fx-padding: 8 18;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-border-color: #9ca3af;
+    -fx-background-color: rgba(156,163,175,0.10);
+}
+
+/* Labels inside Grid */
+.form-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #374151;
+}
+
+.form-value {
+    -fx-font-size: 13px;
+    -fx-text-fill: #111827;
+    -fx-font-weight: bold;
+}
+
+/* Error label */
+.error-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #dc2626;
+}
