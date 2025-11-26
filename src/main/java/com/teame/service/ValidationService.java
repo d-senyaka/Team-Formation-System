@@ -72,22 +72,30 @@ public class ValidationService {
             errors.add("Personality score must be between 0 and 100.");
         }
 
-        // Personality type (non-null)
+        // Personality type (non-null, auto-align with score ranges)
         PersonalityType type = p.getPersonalityType();
         if (type == null) {
             errors.add("Personality type is required.");
         } else {
-            // Optional consistency checks
-            if (score >= 90 && type != PersonalityType.LEADER) {
-                errors.add("Personality type should be LEADER for scores >= 90.");
-            } else if (score >= 70 && score <= 89 && type != PersonalityType.BALANCED) {
-                errors.add("Personality type should be BALANCED for scores between 70 and 89.");
-            } else if (score >= 50 && score <= 69 && type != PersonalityType.THINKER) {
-                errors.add("Personality type should be THINKER for scores between 50 and 69.");
-            } else if (score < 50 && type != PersonalityType.NEEDS_REVIEW) {
-                errors.add("Personality type should be NEEDS_REVIEW for scores below 50.");
+            // Compute the expected type based on coursework spec
+            PersonalityType expected;
+            if (score >= 90) {
+                expected = PersonalityType.LEADER;      // 90–100
+            } else if (score >= 70) {
+                expected = PersonalityType.BALANCED;    // 70–89
+            } else if (score >= 50) {
+                expected = PersonalityType.THINKER;     // 50–69
+            } else {
+                // < 50 — extension beyond brief, your own category
+                expected = PersonalityType.NEEDS_REVIEW;
+            }
+
+            // If mismatched, auto-correct instead of throwing an error
+            if (type != expected) {
+                p.setPersonalityType(expected);
             }
         }
+
 
         return errors;
     }

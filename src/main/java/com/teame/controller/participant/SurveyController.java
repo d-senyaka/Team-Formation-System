@@ -66,18 +66,29 @@ public class SurveyController {
         int q4 = (int) q4Slider.getValue();
         int q5 = (int) q5Slider.getValue();
 
-        int score = personalityService.calculateScore(q1, q2, q3, q4, q5);
-        PersonalityType type = personalityService.classify(score);
+        // 1) raw score 5–25
+        int rawScore = personalityService.calculateScore(q1, q2, q3, q4, q5);
 
+        // 2) scale to 0–100 as per brief (raw * 4)
+        int scaledScore = personalityService.scaleToHundred(rawScore);
+
+        // 3) classify using the 90/70/50 ranges
+        PersonalityType type = personalityService.classifyScore(scaledScore);
+
+        // 4) store SCALED score + type in the participant
         Participant participant = participantSession.getCurrentParticipant();
-        participant.setPersonalityScore(score);
+        participant.setPersonalityScore(scaledScore);
         participant.setPersonalityType(type);
 
-        infoLabel.setText("Personality: " + type + " (score " + score + ")");
+        infoLabel.setText(
+                "Personality: " + type +
+                        " (raw " + rawScore + ", scaled " + scaledScore + ")"
+        );
 
         // Navigate to next screen: role/game/skill
         if (rootLayoutController != null) {
             rootLayoutController.showParticipantRoleGameSkill();
         }
     }
+
 }

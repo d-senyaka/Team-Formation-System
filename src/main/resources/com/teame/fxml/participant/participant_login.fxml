@@ -9,28 +9,44 @@
             fx:controller="com.teame.controller.participant.ParticipantLoginController">
 
     <children>
-        <VBox spacing="12.0" AnchorPane.topAnchor="40.0" AnchorPane.leftAnchor="60.0"
+        <VBox spacing="20.0" AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="60.0"
               AnchorPane.rightAnchor="60.0" AnchorPane.bottomAnchor="40.0">
+
+            <!-- Project Title Section -->
+            <VBox spacing="5">
+                <Label text="Intelligent Team Formation System"
+                       style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+
+                <Label text="Automatically create balanced teams using personality, roles, and skills."
+                       style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Existing Login Title -->
             <Label text="Participant Login" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
 
+            <!-- Participant ID -->
             <Label text="Participant ID:"/>
             <TextField fx:id="idField" promptText="e.g. P001"/>
 
+            <!-- Email -->
             <Label text="Email:"/>
             <TextField fx:id="emailField" promptText="user@university.edu"/>
 
+            <!-- Error Label -->
             <Label fx:id="errorLabel" textFill="red"/>
 
-
+            <!-- Buttons -->
             <HBox spacing="10" alignment="CENTER_RIGHT">
                 <Button text="Create Account" onAction="#handleCreateAccount"/>
                 <Button text="Login" onAction="#handleLogin"/>
-
-                <!-- NEW: organizer button -->
                 <Button text="Organizer Mode" onAction="#handleOrganizerMode"/>
+                <Button text="Exit" onAction="#handleExit"/>
+
             </HBox>
 
-
         </VBox>
+
     </children>
 </AnchorPane>

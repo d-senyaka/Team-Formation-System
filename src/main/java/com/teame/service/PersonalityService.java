@@ -52,19 +52,6 @@ public class PersonalityService {
         return classifyScore(scaled);
     }
 
-    public PersonalityType classify(int score) {
-        // Max score from 5 questions * 5 = 25
-        // You can tweak these ranges to match your friend’s survey rules.
 
-        if (score >= 21) {
-            return PersonalityType.LEADER;
-        } else if (score >= 17) {
-            return PersonalityType.BALANCED;
-        } else if (score >= 13) {
-            return PersonalityType.THINKER;
-        } else {
-            return PersonalityType.NEEDS_REVIEW;
-        }
-    }
 
 }

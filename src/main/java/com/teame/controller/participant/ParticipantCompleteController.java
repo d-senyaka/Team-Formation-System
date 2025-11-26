@@ -5,8 +5,13 @@ import com.teame.controller.common.RootLayoutController;
 import com.teame.model.Participant;
 import com.teame.service.ParticipantSession;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
+import java.util.Optional;
 
 /**
  * Final summary / thank-you screen for participants.
@@ -88,10 +93,19 @@ public class ParticipantCompleteController {
 
     @FXML
     private void handleExit() {
-        // Close the app window
-        if (rootLayoutController != null && rootLayoutController.getRootLayout() != null) {
-            Stage stage = (Stage) rootLayoutController.getRootLayout().getScene().getWindow();
-            stage.close();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit Application");
+        alert.setHeaderText("Are you sure you want to exit?");
+        alert.setContentText("Click Yes to close the application.");
+
+        ButtonType yesButton = new ButtonType("Yes");
+        ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(yesButton, noButton);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == yesButton) {
+            System.exit(0);
         }
     }
 }
