@@ -4,6 +4,8 @@ import com.teame.controller.participant.RoleGameSkillController;
 
 import com.teame.controller.participant.ParticipantCompleteController;
 
+import com.teame.controller.organizer.OrganizerDashboardController;
+
 
 import com.teame.config.AppConfig;
 import com.teame.controller.participant.ParticipantLoginController;
@@ -94,10 +96,21 @@ public class RootLayoutController {
         }
     }
 
-    // Organizer entry point (we'll make a dashboard in 7.2)
     public void showOrganizerDashboard() {
-        // TODO: load organizer_dashboard.fxml and inject AppConfig + this
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/com/teame/fxml/organizer/organizer_dashboard.fxml"));
+            Node view = loader.load();
+
+            OrganizerDashboardController controller = loader.getController();
+            controller.init(appConfig, this);
+
+            rootLayout.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public void showOrganizerDataSource() {
         // TODO in 7.3
