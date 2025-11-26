@@ -49,6 +49,14 @@ public class ParticipantLoginController {
         handleLoginOrCreate(true);
     }
 
+    @FXML
+    private void handleOrganizerMode() {
+        if (rootLayoutController != null) {
+            rootLayoutController.showOrganizerDashboard();
+        }
+    }
+
+
     private void handleLoginOrCreate(boolean createIfMissing) {
         String id = idField.getText() != null ? idField.getText().trim() : "";
         String email = emailField.getText() != null ? emailField.getText().trim() : "";

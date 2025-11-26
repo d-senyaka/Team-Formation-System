@@ -21,10 +21,16 @@
 
             <Label fx:id="errorLabel" textFill="red"/>
 
-            <HBox spacing="10">
-                <Button text="Login" onAction="#handleLogin"/>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
                 <Button text="Create Account" onAction="#handleCreateAccount"/>
+                <Button text="Login" onAction="#handleLogin"/>
+
+                <!-- NEW: organizer button -->
+                <Button text="Organizer Mode" onAction="#handleOrganizerMode"/>
             </HBox>
+
+
         </VBox>
     </children>
 </AnchorPane>
