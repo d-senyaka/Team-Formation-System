@@ -1,5 +1,7 @@
 TeamID,ParticipantID,Name,Email,PreferredGame,SkillLevel,PreferredRole,PersonalityScore,PersonalityType
-Team 1,P001,P001,user1@university.edu,Chess,8,Strategist,100,Leader
-Team 1,p1,p1,1@university.edu,FIFA,5,Strategist,60,Thinker
+Team 2,p1,p1,1@university.edu,CS:GO,5,Attacker,60,Thinker
+Team 2,Q1,Q1,q1@university.edu,Valorant,7,Supporter,84,Balanced
+Team 2,s1,s1,s1@university.edu,DOTA 2,5,Attacker,60,Thinker
 Team 1,P002,P002,user2@university.edu,CS:GO,6,Coordinator,64,Thinker
 Team 1,p2,p2,use3@university.edu,CS:GO,4,Coordinator,56,Thinker
+Team 1,P001,P001,user1@university.edu,Chess,8,Strategist,100,Leader
