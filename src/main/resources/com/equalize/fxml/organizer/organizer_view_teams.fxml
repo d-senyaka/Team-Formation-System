@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.equalize.controller.organizer.ViewTeamsController"
+            stylesheets="@../../css/view_teams.css">
+
+    <children>
+        <VBox spacing="14"
+              AnchorPane.topAnchor="20.0"
+              AnchorPane.leftAnchor="20.0"
+              AnchorPane.rightAnchor="20.0"
+              AnchorPane.bottomAnchor="20.0"
+              styleClass="view-teams-container">
+
+            <!-- Title -->
+            <Label text="Formed Teams"
+                   styleClass="view-teams-title"/>
+
+            <!-- Summary counts -->
+            <HBox spacing="12">
+                <Label text="Total teams:" styleClass="counter-label"/>
+                <Label fx:id="teamCountLabel" styleClass="counter-value"/>
+
+                <Label text="Total participants:" styleClass="counter-label"/>
+                <Label fx:id="participantCountLabel" styleClass="counter-value"/>
+            </HBox>
+
+            <!-- Split view -->
+            <SplitPane dividerPositions="0.25">
+                <items>
+
+                    <!-- Left: list of teams -->
+                    <VBox spacing="6" styleClass="team-list-panel">
+                        <Label text="Teams" styleClass="team-list-title"/>
+                        <ListView fx:id="teamListView"/>
+                    </VBox>
+
+                    <!-- Right: members of selected team -->
+                    <VBox spacing="6" styleClass="member-table-panel">
+                        <Label fx:id="selectedTeamLabel"
+                               text="No team selected"
+                               styleClass="selected-team-label"/>
+                        <TableView fx:id="memberTable" prefHeight="320.0">
+                            <columns>
+                                <TableColumn fx:id="idColumn" text="ID" prefWidth="70.0"/>
+                                <TableColumn fx:id="nameColumn" text="Name" prefWidth="120.0"/>
+                                <TableColumn fx:id="gameColumn" text="Game" prefWidth="90.0"/>
+                                <TableColumn fx:id="skillColumn" text="Skill" prefWidth="60.0"/>
+                                <TableColumn fx:id="roleColumn" text="Role" prefWidth="90.0"/>
+                                <TableColumn fx:id="personalityColumn" text="Personality" prefWidth="110.0"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+
+                </items>
+            </SplitPane>
+
+            <!-- Buttons -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Export Teams to CSV"
+                        onAction="#handleExport"
+                        styleClass="primary-button"/>
+
+                <Button text="Back to Dashboard"
+                        onAction="#handleBackToDashboard"
+                        styleClass="secondary-button"/>
+            </HBox>
+
+            <!-- Status labels -->
+            <Label fx:id="statusLabel" styleClass="status-label"/>
+            <Label fx:id="errorLabel" styleClass="error-label"/>
+
+        </VBox>
+    </children>
+</AnchorPane>

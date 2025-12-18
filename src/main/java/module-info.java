@@ -5,18 +5,18 @@ module org.oop.teameintelligentteamformation {
     requires javafx.base;
 
     // FXML controllers
-    opens com.teame to javafx.fxml;
-    opens com.teame.controller.common to javafx.fxml;
-    opens com.teame.controller.participant to javafx.fxml;
-    opens com.teame.controller.organizer to javafx.fxml;
+    opens com.equalize to javafx.fxml;
+    opens com.equalize.controller.common to javafx.fxml;
+    opens com.equalize.controller.participant to javafx.fxml;
+    opens com.equalize.controller.organizer to javafx.fxml;
 
     // Model classes used by TableView / PropertyValueFactory (Participant, User, etc.)
-    opens com.teame.model to javafx.base, javafx.fxml;
+    opens com.equalize.model to javafx.base, javafx.fxml;
 
     // (optional) exports – only if you need them outside the module
-    exports com.teame;
-    exports com.teame.controller.common;
-    exports com.teame.controller.participant;
-    exports com.teame.controller.organizer;
-    exports com.teame.model;
+    exports com.equalize;
+    exports com.equalize.controller.common;
+    exports com.equalize.controller.participant;
+    exports com.equalize.controller.organizer;
+    exports com.equalize.model;
 }

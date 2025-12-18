@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.equalize.controller.participant.RoleGameSkillController"
+            stylesheets="@../../css/skill.css">
+
+    <children>
+        <VBox spacing="16.0"
+              AnchorPane.bottomAnchor="20.0"
+              AnchorPane.leftAnchor="40.0"
+              AnchorPane.rightAnchor="40.0"
+              AnchorPane.topAnchor="20.0"
+              styleClass="login-container">
+
+            <!-- Title -->
+            <Label text="Preferred Role, Game and Skill"
+                   styleClass="section-title"/>
+
+            <!-- Subtitle -->
+            <Label text="Choose the role and game you prefer playing in a team."
+                   styleClass="helper-text"/>
+
+            <!-- Role -->
+            <Label text="Preferred Team Role:" styleClass="field-label"/>
+            <ComboBox fx:id="roleCombo" prefWidth="280" styleClass="combo-field"/>
+
+            <!-- Game -->
+            <Label text="Preferred Game:" styleClass="field-label"/>
+            <ComboBox fx:id="gameCombo" prefWidth="280" styleClass="combo-field"/>
+
+            <!-- Skill -->
+            <Label text="Self-rated Skill Level (1 = Beginner, 10 = Expert):"
+                   styleClass="field-label"/>
+
+            <Slider fx:id="skillSlider"
+                    prefWidth="280"
+                    min="1"
+                    max="10"
+                    value="5"
+                    blockIncrement="1"
+                    majorTickUnit="1"
+                    minorTickCount="0"
+                    snapToTicks="true"
+                    showTickLabels="true"
+                    showTickMarks="true" />
+
+
+            <Label fx:id="errorLabel" styleClass="error-label"/>
+            <Label fx:id="infoLabel" styleClass="helper-text"/>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button onAction="#handleSave" text="Save" styleClass="primary-button"/>
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>
