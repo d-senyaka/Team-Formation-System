@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.equalize.controller.common.RootLayoutController"
+            fx:id="rootLayout"
+            prefWidth="1000.0"
+            prefHeight="720.0">
+
+    <!--
+      Center is kept empty in FXML.
+      RootLayoutController will call rootLayout.setCenter(view)
+      to load participant / organizer screens.
+    -->
+
+</BorderPane>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.equalize.controller.organizer.OrganizerDashboardController"
+            stylesheets="@../../css/dashboard.css">
+
+    <children>
+        <VBox spacing="16.0"
+              AnchorPane.topAnchor="30.0"
+              AnchorPane.bottomAnchor="30.0"
+              AnchorPane.leftAnchor="40.0"
+              AnchorPane.rightAnchor="40.0"
+              styleClass="dashboard-container">
+
+            <!-- Title -->
+            <Label text="Organizer Dashboard"
+                   styleClass="dashboard-title"/>
+
+            <!-- Subtitle -->
+            <Label text="Manage participants, handle invalid rows, form teams, and view team results."
+                   styleClass="dashboard-subtitle"/>
+
+            <Separator/>
+
+            <!-- Action buttons -->
+            <VBox spacing="12">
+                <Button text="1. Data Source / Load Participants"
+                        prefWidth="280"
+                        onAction="#handleOpenDataSource"
+                        styleClass="menu-button"/>
+
+                <Button text="2. View / Fix Invalid Rows"
+                        prefWidth="280"
+                        onAction="#handleOpenInvalidRows"
+                        styleClass="menu-button"/>
+
+                <Button text="3. Form Teams"
+                        prefWidth="280"
+                        onAction="#handleOpenTeamFormation"
+                        styleClass="menu-button"/>
+
+                <Button text="4. View and Export Teams"
+                        prefWidth="280"
+                        onAction="#handleOpenViewTeams"
+                        styleClass="menu-button"/>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Back button -->
+            <HBox alignment="CENTER_LEFT">
+                <Button text="Back to Main Menu"
+                        onAction="#handleBackToParticipant"
+                        styleClass="back-button"/>
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>

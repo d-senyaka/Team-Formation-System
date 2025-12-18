@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.equalize.controller.participant.SurveyController"
+            stylesheets="@../../css/survey.css">
+
+    <children>
+        <VBox spacing="12.0"
+              AnchorPane.topAnchor="20.0"
+              AnchorPane.bottomAnchor="20.0"
+              AnchorPane.leftAnchor="40.0"
+              AnchorPane.rightAnchor="40.0"
+              styleClass="survey-container">
+
+
+        <!-- Page Title -->
+            <Label text="Gaming and Personality Survey"
+                   styleClass="survey-title"/>
+
+            <!-- Subtitle -->
+            <Label text="Please answer each question from 1 (Strongly Disagree) to 5 (Strongly Agree)."
+                   styleClass="survey-subtitle"/>
+
+            <!-- Questions Section -->
+            <VBox spacing="14">
+
+                <!-- Q1 -->
+                <Label text="Q1: I enjoy leading and coordinating my team."
+                       styleClass="survey-question-label"/>
+                <Slider fx:id="q1Slider"
+                        min="1" max="5" value="3"
+                        majorTickUnit="1"
+                        snapToTicks="true"
+                        blockIncrement="1"
+                        showTickMarks="true"
+                        showTickLabels="true"
+                        styleClass="survey-slider"/>
+
+                <!-- Q2 -->
+                <Label text="Q2: I like planning strategies before acting."
+                       styleClass="survey-question-label"/>
+                <Slider fx:id="q2Slider"
+                        min="1" max="5" value="3"
+                        majorTickUnit="1"
+                        snapToTicks="true"
+                        blockIncrement="1"
+                        showTickMarks="true"
+                        showTickLabels="true"
+                        styleClass="survey-slider"/>
+
+                <!-- Q3 -->
+                <Label text="Q3: I stay calm and think logically under pressure."
+                       styleClass="survey-question-label"/>
+                <Slider fx:id="q3Slider"
+                        min="1" max="5" value="3"
+                        majorTickUnit="1"
+                        snapToTicks="true"
+                        blockIncrement="1"
+                        showTickMarks="true"
+                        showTickLabels="true"
+                        styleClass="survey-slider"/>
+
+                <!-- Q4 -->
+                <Label text="Q4: I prefer to support others rather than be in the spotlight."
+                       styleClass="survey-question-label"/>
+                <Slider fx:id="q4Slider"
+                        min="1" max="5" value="3"
+                        majorTickUnit="1"
+                        snapToTicks="true"
+                        blockIncrement="1"
+                        showTickMarks="true"
+                        showTickLabels="true"
+                        styleClass="survey-slider"/>
+
+                <!-- Q5 -->
+                <Label text="Q5: I like analysing moves and predicting outcomes."
+                       styleClass="survey-question-label"/>
+                <Slider fx:id="q5Slider"
+                        min="1" max="5" value="3"
+                        majorTickUnit="1"
+                        snapToTicks="true"
+                        blockIncrement="1"
+                        showTickMarks="true"
+                        showTickLabels="true"
+                        styleClass="survey-slider"/>
+
+            </VBox>
+
+            <!-- Info Label -->
+            <Label fx:id="infoLabel" styleClass="survey-info-label"/>
+
+            <!-- Buttons -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Next" onAction="#handleNext" styleClass="primary-button"/>
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>

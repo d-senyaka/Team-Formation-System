@@ -1,0 +1,120 @@
+/* Global base styling */
+.root {
+    -fx-font-family: "Segoe UI", "Roboto", "Sans-Serif";
+    -fx-background-color: linear-gradient(to bottom, #f5f7fb, #e3e7f0);
+}
+
+/* Card-like login container */
+.login-container {
+    -fx-background-color: white;
+    -fx-padding: 30 40 30 40;
+    -fx-spacing: 18;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #dde1eb;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 16, 0.2, 0, 4);
+}
+
+/* App title + subtitle */
+.app-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2933;
+}
+
+.app-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #6b7280;
+}
+
+/* Section title (e.g. Participant Login) */
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+    -fx-padding: 10 0 0 0;
+}
+
+/* Field labels */
+.field-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #4b5563;
+}
+
+/* Text fields */
+.input-field,
+.text-field {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #d1d5db;
+    -fx-border-width: 1;
+    -fx-padding: 6 10 6 10;
+    -fx-background-color: #f9fafb;
+    -fx-text-fill: #111827;
+    -fx-prompt-text-fill: #9ca3af;
+}
+
+.input-field:focused,
+.text-field:focused {
+    -fx-border-color: #2563eb;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.25), 8, 0.3, 0, 0);
+}
+
+/* Error label */
+.error-label {
+    -fx-text-fill: #dc2626;
+    -fx-font-size: 12px;
+}
+
+/* Buttons – base */
+.button {
+    -fx-background-radius: 999;
+    -fx-padding: 6 16 6 16;
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #111827;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #d1d5db;
+}
+
+/* Primary action buttons */
+.primary-button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+/* Secondary button */
+.secondary-button {
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #111827;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #d4d4d8;
+}
+
+/* Danger / Exit button */
+.danger-button {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+}
+
+.danger-button:hover {
+    -fx-background-color: #dc2626;
+}
+
+/* Separator spacing tweak */
+.separator {
+    -fx-padding: 10 0 5 0;
+}

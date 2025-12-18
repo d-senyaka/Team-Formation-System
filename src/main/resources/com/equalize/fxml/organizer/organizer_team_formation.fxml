@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.equalize.controller.organizer.TeamFormationController"
+            stylesheets="@../../css/team_formation.css">
+
+    <children>
+        <VBox spacing="16.0"
+              AnchorPane.topAnchor="20.0"
+              AnchorPane.leftAnchor="20.0"
+              AnchorPane.rightAnchor="20.0"
+              AnchorPane.bottomAnchor="20.0"
+              styleClass="team-formation-container">
+
+            <!-- Title -->
+            <Label text="Team Formation"
+                   styleClass="team-formation-title"/>
+
+            <!-- Subtitle -->
+            <Label text="Specify team size and form balanced teams from cleaned participants."
+                   styleClass="team-formation-subtitle"/>
+
+            <!-- Form grid -->
+            <GridPane hgap="8" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="150" halignment="RIGHT"/>
+                    <ColumnConstraints prefWidth="260"/>
+                </columnConstraints>
+
+                <children>
+                    <Label text="Valid participants:"
+                           GridPane.rowIndex="0" GridPane.columnIndex="0"
+                           styleClass="form-label"/>
+                    <Label fx:id="validCountLabel"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"
+                           styleClass="form-value"/>
+
+                    <Label text="Team size:"
+                           GridPane.rowIndex="1" GridPane.columnIndex="0"
+                           styleClass="form-label"/>
+                    <TextField fx:id="teamSizeField"
+                               GridPane.rowIndex="1" GridPane.columnIndex="1"
+                               promptText="e.g. 5"/>
+
+                    <Label text="Estimated teams:"
+                           GridPane.rowIndex="2" GridPane.columnIndex="0"
+                           styleClass="form-label"/>
+                    <Label fx:id="estimatedTeamsLabel"
+                           GridPane.rowIndex="2" GridPane.columnIndex="1"
+                           styleClass="form-value"/>
+
+                    <Label text="Last formation:"
+                           GridPane.rowIndex="3" GridPane.columnIndex="0"
+                           styleClass="form-label"/>
+                    <Label fx:id="statusLabel"
+                           GridPane.rowIndex="3" GridPane.columnIndex="1"
+                           styleClass="status-label"/>
+                </children>
+            </GridPane>
+
+            <!-- Buttons -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Form Teams"
+                        onAction="#handleFormTeams"
+                        styleClass="primary-button"/>
+                <Button text="Back to Dashboard"
+                        onAction="#handleBackToDashboard"
+                        styleClass="secondary-button"/>
+            </HBox>
+
+            <!-- Error message -->
+            <Label fx:id="errorLabel" styleClass="error-label"/>
+
+        </VBox>
+    </children>
+</AnchorPane>

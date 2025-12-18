@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.equalize.controller.participant.ParticipantCompleteController"
+            stylesheets="@../../css/complete.css">
+
+    <children>
+        <VBox spacing="16.0"
+              AnchorPane.topAnchor="30.0"
+              AnchorPane.bottomAnchor="30.0"
+              AnchorPane.leftAnchor="40.0"
+              AnchorPane.rightAnchor="40.0"
+              styleClass="complete-container">
+
+            <!-- Title -->
+            <Label text="Thank You!"
+                   styleClass="completion-title"/>
+
+            <!-- Subtitle -->
+            <Label text="Your details have been saved for team formation."
+                   styleClass="completion-subtitle"/>
+
+            <Separator/>
+
+            <!-- Summary grid -->
+            <GridPane hgap="10" vgap="6">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT" prefWidth="120"/>
+                    <ColumnConstraints prefWidth="260"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+
+                <children>
+                    <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                           styleClass="grid-label"/>
+                    <Label fx:id="idLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                           styleClass="grid-value"/>
+
+                    <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                           styleClass="grid-label"/>
+                    <Label fx:id="nameLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                           styleClass="grid-value"/>
+
+                    <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2"
+                           styleClass="grid-label"/>
+                    <Label fx:id="emailLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                           styleClass="grid-value"/>
+
+                    <Label text="Personality:" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                           styleClass="grid-label"/>
+                    <Label fx:id="personalityLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                           styleClass="grid-value"/>
+
+                    <Label text="Preferred Role:" GridPane.columnIndex="0" GridPane.rowIndex="4"
+                           styleClass="grid-label"/>
+                    <Label fx:id="roleLabel" GridPane.columnIndex="1" GridPane.rowIndex="4"
+                           styleClass="grid-value"/>
+
+                    <Label text="Preferred Game:" GridPane.columnIndex="0" GridPane.rowIndex="5"
+                           styleClass="grid-label"/>
+                    <Label fx:id="gameLabel" GridPane.columnIndex="1" GridPane.rowIndex="5"
+                           styleClass="grid-value"/>
+
+                    <Label text="Skill Level:" GridPane.columnIndex="0" GridPane.rowIndex="6"
+                           styleClass="grid-label"/>
+                    <Label fx:id="skillLabel" GridPane.columnIndex="1" GridPane.rowIndex="6"
+                           styleClass="grid-value"/>
+                </children>
+            </GridPane>
+
+            <!-- Buttons -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Back to Main Menu"
+                        onAction="#handleBackToLogin"
+                        styleClass="secondary-button"/>
+                <Button text="Exit"
+                        onAction="#handleExit"
+                        styleClass="primary-button"/>
+            </HBox>
+
+        </VBox>
+    </children>
+</AnchorPane>
