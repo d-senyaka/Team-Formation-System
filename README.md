@@ -1,4 +1,4 @@
-# ⚖️ Equalize – Intelligent Team Formation System
+# ⚖️ Equalizer – Intelligent Team Formation System
 
 ![Java](https://img.shields.io/badge/Java-21-blue?logo=java)
 ![JavaFX](https://img.shields.io/badge/JavaFX-UI-green)
@@ -6,16 +6,15 @@
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 ![Last Updated](https://img.shields.io/badge/Last%20Updated-November%202025-purple)
 
-> **Equalize** intelligently forms balanced teams using participant **personality traits, preferred roles, games, and skill levels** — replacing random grouping with data-driven fairness.
+> **Equalizer** intelligently forms balanced teams using participant **personality traits, preferred roles, games, and skill levels** — replacing random grouping with data-driven fairness.
 
 ---
 
 ## 🧭 Overview
 
-**Equalize** is a JavaFX-based desktop application developed for an **Object-Oriented Programming (OOP)** coursework project.  
-The system supports **participants** and **organizers**, allowing structured data collection, validation, preprocessing, and intelligent team formation.
+**Equalizer** is a JavaFX-based desktop application developed mainly with **Object-Oriented Programming (OOP)** as a system that supports **participants** and **organizers**, allowing structured data collection, validation, preprocessing, and intelligent team formation.
 
-The goal of Equalize is simple:
+The goal of Equalizer is simple:
 
 > 🎯 *Create fair, balanced teams by equalizing skills, roles, and personalities.*
 
@@ -117,8 +116,8 @@ mvn test
 
 ## 🧑‍💻 Author
 
-**Equalize – Intelligent Team Formation System**  
-Developed by **Senyaka**  
+**Equalizer – Intelligent Team Formation System**  
+Developed by **d-senyaka**  
 
 
 ---
