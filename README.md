@@ -5,14 +5,14 @@
 ![Build](https://img.shields.io/badge/Build-Maven-orange)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 ![Last Updated](https://img.shields.io/badge/Last%20Updated-November%202025-purple)
-
-> **Equalizer** intelligently forms balanced teams using participant **personality traits, preferred roles, games, and skill levels** — replacing random grouping with data-driven fairness.
-
 ---
 
 ## 🧭 Overview
 
 **Equalizer** is a JavaFX-based desktop application developed mainly with **Object-Oriented Programming (OOP)** as a system that supports **participants** and **organizers**, allowing structured data collection, validation, preprocessing, and intelligent team formation.
+
+> **Equalizer** intelligently forms balanced teams using participant **personality traits, preferred roles, games, and skill levels** — replacing random grouping with data-driven fairness.
+
 
 The goal of Equalizer is simple:
 
